@@ -4,6 +4,7 @@ import Timer from "./Timer";
 import Recap from "./Recap";
 import Letter from "./Letter";
 import Closing from "./Closing";
+import Picture from "./Picture";
 import Carousel from "./Carousel";
 
 export { Passcode, Question, Timer, Recap, Letter, Closing, Picture, Carousel };
