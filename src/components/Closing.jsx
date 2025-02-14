@@ -1,16 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { ArrowLeft } from "./icons";
 import { useNavigate } from "react-router-dom";
 import { fireworks } from "../assets";
 import confetti from "canvas-confetti";
+import FloatingValentineImages from "./FloatingValentineImages";
 
 function Closing() {
   const navigate = useNavigate();
+  const audioElementRef = useRef(null);
   const [yes, setYes] = useState(false);
+  const [floatImage, setFloatImage] = useState(false);
+  const [audio, setAudio] = useState(false);
   const [noButtonStyle, setNoButtonStyle] = useState({});
 
   const handleYes = () => {
     setYes(true);
+    setAudio(true);
+    setFloatImage(true);
   };
   const handleNoClick = () => {
     // When Maya hovers over the NO button, move it to a random position
@@ -31,8 +37,14 @@ function Closing() {
     }
   }, [yes]);
 
+  useEffect(() => {
+    if (audio) {
+      audioElementRef.current.play();
+    }
+  }, [audio]);
+
   return (
-    <div className="min-h-screen w-full bg-black/20 flex flex-col items-center justify-center">
+    <div className="min-h-screen w-full bg-black/20 flex flex-col items-center justify-center relative z-20">
       <div className="relative h-screen w-full overflow-hidden flex flex-col items-center justify-center">
         {/* Fireworks background */}
         <div
@@ -97,8 +109,10 @@ function Closing() {
               <ArrowLeft /> Previous page
             </button>
           </div>
+          <audio src="/music/bhawana.mp3" ref={audioElementRef} loop />
         </div>
       </div>
+      {floatImage ? <FloatingValentineImages /> : ""}
     </div>
   );
 }

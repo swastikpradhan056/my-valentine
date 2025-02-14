@@ -84,13 +84,14 @@ function Question() {
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="flex-1 bg-transparent outline-none"
                 autoFocus
+                placeholder="Search: How long have we been together?"
               />
               <Mic className="w-5 h-5 text-[#8ab4f8]" />
               <Camera className="w-5 h-5 text-[#8ab4f8]" />
             </div>
           </form>
           <div className="mt-10  px-5 text-white/50">
-            <p>Pro tip: try searching "How long have we been together?" ;)</p>
+            <p>Pro tip: try searching "How long have we been together?"😜</p>
           </div>
         </div>
       )}
